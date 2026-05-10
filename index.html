@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>UI Audit & Design System — 3-Week Part-Time Engagement Roadmap</title>
+<title>UI Audit & Design System 3-Week Part-Time Engagement Roadmap</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,700;12..96,800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
@@ -255,19 +255,22 @@ nav {
   display: flex; align-items: flex-start; gap: var(--sp-2);
 }
 .item-list li::before {
-  content: '—';
+  content: '·';
   font-family: var(--font-mono);
-  font-size: 11px;
+  font-size: 20px;
   color: var(--color-ink-tertiary);
-  flex-shrink: 0; margin-top: 3px;
+  flex-shrink: 0; margin-top: -2px;
 }
 
 .phase-footer {
   padding: var(--sp-4) var(--sp-8);
   background: var(--color-bg-surface-2);
   border-top: 1px solid var(--color-border-subtle);
-  display: flex; align-items: center; gap: var(--sp-4);
-  flex-wrap: wrap;
+  display: flex; align-items: flex-start; gap: var(--sp-2);
+  flex-wrap: nowrap;
+}
+.checkin-items {
+  display: flex; flex-direction: column; gap: var(--sp-2);
 }
 .checkin-label {
   font-family: var(--font-mono);
@@ -339,7 +342,7 @@ nav {
 
 /* ── ENGAGEMENT NOTES ── */
 .notes-grid {
-  display: grid; grid-template-columns: 1fr 1fr; gap: var(--sp-4);
+  display: grid; grid-template-columns: 1fr 1fr; gap: var(--sp-8);
   margin-bottom: var(--sp-16);
 }
 .note-card {
@@ -481,9 +484,9 @@ footer {
     <h1>UI Audit &amp;<br><span class="accent">Design System</span><br>Foundation</h1>
     <p class="hero-sub">A focused 3-week part-time engagement (3 days per week) to audit your current product, establish a scalable design token architecture and component library, and demonstrate the new system through a real feature redesign.</p>
     <div class="hero-pills">
-      <span class="pill blue">Week 1 — Audit &amp; Discovery</span>
-      <span class="pill" style="background:#F5F3FF; color:#7C3AED; border-color:#7C3AED;">Week 2 — Design System Foundations</span>
-      <span class="pill cyan">Week 3 — Feature Redesign</span>
+      <span class="pill blue">Week 1 Audit &amp; Discovery</span>
+      <span class="pill" style="background:#F5F3FF; color:#7C3AED; border-color:#7C3AED;">Week 2 Design System Foundations</span>
+      <span class="pill cyan">Week 3 Feature Redesign</span>
     </div>
   </div>
 
@@ -540,7 +543,7 @@ footer {
         <div class="phase-col">
           <div class="col-label">Goals</div>
           <ul class="item-list">
-            <li>Develop a complete cross-platform picture of the current product — desktop, tablet, and mobile</li>
+            <li>Develop a complete cross-platform picture of the current product desktop, tablet, and mobile</li>
             <li>Surface all major inconsistencies in layout, spacing, typography, colour, and components</li>
             <li>Identify key usability and accessibility gaps against WCAG 2.1 AA</li>
             <li>Align on a high-level visual direction for the system going forward</li>
@@ -551,7 +554,7 @@ footer {
           <div class="col-heading">Audit Report</div>
           <ul class="item-list">
             <li>Annotated UI audit across all breakpoints with documented issues</li>
-            <li>Issue log organised by element and component, covering layout, spacing, typography, and colour — with an inventory of existing styles</li>
+            <li>Issue log organised by element and component, covering layout, spacing, typography, and colour with an inventory of existing styles</li>
             <li>Visual direction moodboard and design language brief (2–3 directions)</li>
           </ul>
         </div>
@@ -566,9 +569,11 @@ footer {
       </div>
       <div class="phase-footer">
         <span class="checkin-label">Check-ins</span>
-        <div class="checkin-item"><span class="checkin-dot" style="background:var(--color-brand-blue);"></span>Day 1 — Kick-off call &amp; access handover</div>
-        <div class="checkin-item"><span class="checkin-dot" style="background:var(--color-brand-blue);"></span>Day 2 — Async audit preview (Figma / Loom)</div>
-        <div class="checkin-item"><span class="checkin-dot" style="background:var(--color-brand-blue);"></span>Day 3 — Audit readout &amp; direction sign-off call</div>
+        <div class="checkin-items">
+          <div class="checkin-item"><span class="checkin-dot" style="background:var(--color-brand-blue);"></span>Day 1 Kick-off &amp; access handover via Figma</div>
+          <div class="checkin-item"><span class="checkin-dot" style="background:var(--color-brand-blue);"></span>Day 2 Audit preview shared in Figma (async comments)</div>
+          <div class="checkin-item"><span class="checkin-dot" style="background:var(--color-brand-blue);"></span>Day 3 Audit readout &amp; direction sign-off via Figma</div>
+        </div>
       </div>
     </div>
 
@@ -586,8 +591,8 @@ footer {
         <div class="phase-col">
           <div class="col-label">Goals</div>
           <ul class="item-list">
-            <li>Establish a token-first design architecture — primitives mapped to semantic aliases</li>
-            <li>Define foundational tokens: colour, typography, spacing, radius, and elevation — motion and interaction patterns to follow once foundations are settled</li>
+            <li>Establish a token-first design architecture primitives mapped to semantic aliases</li>
+            <li>Define foundational tokens: colour, typography, spacing, radius, and elevation motion and interaction patterns to follow once foundations are settled</li>
             <li>Build the most-used components as reusable, well-documented Figma variants</li>
             <li>Lay the structural foundation for future team adoption and product expansion</li>
           </ul>
@@ -596,28 +601,30 @@ footer {
           <div class="col-label">Deliverables</div>
           <div class="col-heading">Token Library + Core Components</div>
           <ul class="item-list">
-            <li>Token file — colour primitives, semantic aliases, spacing scale, radius, elevation</li>
-            <li>Typography system — type roles, font pairing, size scale, line height, weight</li>
+            <li>Token file colour primitives, semantic aliases, spacing scale, radius, elevation</li>
+            <li>Typography system type roles, font pairing, size scale, line height, weight</li>
             <li>Figma component library: Button, Input, Select, Checkbox, Radio, Modal, Card, Badge, Table row, Navigation bar, Form layout</li>
-            <li>Light mode only for now — dark mode to follow after Week 3 once foundations are solid</li>
+            <li>Light mode by default, dark mode available as an optional add-on</li>
             <li>Naming conventions doc and brief contributor guide</li>
           </ul>
         </div>
         <div class="phase-col">
           <div class="col-label">Expected Outcomes</div>
           <ul class="item-list">
-            <li>A shared source of truth for design decisions — no more ad hoc colour or spacing choices</li>
+            <li>A shared source of truth for design decisions no more ad hoc colour or spacing choices</li>
             <li>Components that are production-ready, variant-rich, and documented for developer handoff</li>
-            <li>A scalable architecture that grows as the product does — no throw-away work</li>
+            <li>A scalable architecture that grows as the product does no throw-away work</li>
             <li>Team confidence that the system reflects the agreed visual direction from Week 1</li>
           </ul>
         </div>
       </div>
       <div class="phase-footer">
         <span class="checkin-label">Check-ins</span>
-        <div class="checkin-item"><span class="checkin-dot" style="background:#7C3AED;"></span>Day 4 — Token review &amp; component scope alignment</div>
-        <div class="checkin-item"><span class="checkin-dot" style="background:#7C3AED;"></span>Day 5 — Component WIP review (async Figma comment)</div>
-        <div class="checkin-item"><span class="checkin-dot" style="background:#7C3AED;"></span>Day 6 — Library hand-off walkthrough call</div>
+        <div class="checkin-items">
+          <div class="checkin-item"><span class="checkin-dot" style="background:#7C3AED;"></span>Day 4 Token review &amp; component scope alignment via Figma</div>
+          <div class="checkin-item"><span class="checkin-dot" style="background:#7C3AED;"></span>Day 5 Component WIP review (async Figma comments)</div>
+          <div class="checkin-item"><span class="checkin-dot" style="background:#7C3AED;"></span>Day 6 Library hand-off via Figma</div>
+        </div>
       </div>
     </div>
 
@@ -635,7 +642,7 @@ footer {
         <div class="phase-col">
           <div class="col-label">Goals</div>
           <ul class="item-list">
-            <li>Select one representative, self-contained feature — agreed with the client at kick-off or during Week 1</li>
+            <li>Select one representative, self-contained feature agreed with the client at kick-off or during Week 1</li>
             <li>Redesign it end-to-end using only system-defined tokens and library components</li>
             <li>Show how the design system elevates the feature: improved hierarchy, clarity, and visual quality</li>
             <li>Produce a handoff-ready file that the dev team can immediately act on</li>
@@ -645,11 +652,11 @@ footer {
           <div class="col-label">Deliverables</div>
           <div class="col-heading">Redesigned Feature + Handoff</div>
           <ul class="item-list">
-            <li>Desktop + mobile redesign of the chosen feature — core happy path only</li>
-            <li>Side-by-side before/after comparison for stakeholder presentation</li>
+            <li>Desktop + mobile redesign of the chosen feature core happy path only</li>
+            <li>Side-by-side before/after comparison shared in Figma</li>
             <li>Annotated design spec (spacing, tokens, component states)</li>
             <li>Interaction notes for key UI moments (focus states, empty states, loading)</li>
-            <li>Shared Figma file with annotations so stakeholders can explore anytime — plus a call to walk through it together if useful</li>
+            <li>Annotated Figma file shared for stakeholder review via async comments</li>
           </ul>
         </div>
         <div class="phase-col">
@@ -658,16 +665,18 @@ footer {
             <li>Tangible, real-world proof that the design system improves the product</li>
             <li>A referenceable template for how the team should approach future feature work</li>
             <li>Developer-ready specs that accelerate implementation without additional design effort</li>
-            <li>Stakeholder buy-in and momentum to continue expanding the system post-engagement</li>
+            <li>A clear path for the client to keep building on the system after the engagement</li>
             <li>Before/after comparison of UI inconsistencies to show measurable progress</li>
           </ul>
         </div>
       </div>
       <div class="phase-footer">
         <span class="checkin-label">Check-ins</span>
-        <div class="checkin-item"><span class="checkin-dot" style="background:var(--color-success);"></span>Day 7 — Feature scope confirmation &amp; design kick-off</div>
-        <div class="checkin-item"><span class="checkin-dot" style="background:var(--color-success);"></span>Day 8 — Design WIP review (async Loom)</div>
-        <div class="checkin-item"><span class="checkin-dot" style="background:var(--color-success);"></span>Day 9 — Final presentation &amp; engagement close</div>
+        <div class="checkin-items">
+          <div class="checkin-item"><span class="checkin-dot" style="background:var(--color-success);"></span>Day 7 Feature scope confirmation &amp; design kick-off via Figma</div>
+          <div class="checkin-item"><span class="checkin-dot" style="background:var(--color-success);"></span>Day 8 Design WIP review (async Figma comments)</div>
+          <div class="checkin-item"><span class="checkin-dot" style="background:var(--color-success);"></span>Day 9 Final Figma file delivery &amp; engagement close</div>
+        </div>
       </div>
     </div>
 
@@ -678,8 +687,8 @@ footer {
     <div class="note-card note-card-accent">
       <div class="note-card-title">Scope Principles</div>
       <ul class="item-list">
-        <li>Scoped to the core design layer only — Figma files, token definitions, and design specs</li>
-        <li>Engineering implementation, Storybook setup, and product rollout are not included — this engagement is design-only</li>
+        <li>Scoped to the core design layer only Figma files, token definitions, and design specs</li>
+        <li>Engineering implementation, Storybook setup, and product rollout are not included this engagement is design-only</li>
         <li>The Week 3 feature redesign covers the primary user flow only</li>
         <li>Edge cases, error states beyond the component library, and admin variants are deferred to a follow-on engagement</li>
       </ul>
@@ -687,20 +696,20 @@ footer {
     <div class="note-card note-card-yellow">
       <div class="note-card-title">What We Need From You</div>
       <ul class="item-list">
-        <li>Access to the current product — staging login or screen recordings</li>
+        <li>Access to the current product staging login or existing Figma files</li>
         <li>Any existing brand guidelines or Figma files</li>
         <li>One key stakeholder point of contact for async review</li>
             <li>Week 3 feature decision ideally confirmed at kick-off, or no later than the end of Week 1</li>
-        <li>A shared Figma workspace and communication channel (Slack or equivalent) from Day 1</li>
+        <li>A shared Figma workspace from Day 1</li>
       </ul>
     </div>
     <div class="note-card">
       <div class="note-card-title">Collaboration Model</div>
       <ul class="item-list">
-        <li>Part-time engagement — 3 days per week, ideally Monday, Wednesday, and Friday</li>
+        <li>Part-time engagement 3 days per week, ideally Monday, Wednesday, and Friday</li>
         <li>Exact days agreed at kick-off to suit your team's schedule</li>
         <li>Off-days are built in for async review without calendar pressure</li>
-        <li>Each phase ends with a structured live call before the next phase begins</li>
+        <li>Each phase ends with a Figma file delivery and sign-off before the next phase begins</li>
         <li>Decisions made at each phase gate are locked to protect timeline and quality</li>
       </ul>
     </div>
