@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UI Audit & Design System — 3-Week Part-Time Engagement Roadmap</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,700;12..96,800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --color-bg-page:       #F5F2EA;
+  --color-bg-surface:    #FFFFFF;
+  --color-bg-surface-2:  #EDEAE0;
+  --color-bg-hover:      #D1CCC0;
+  --color-ink:           #1A1A1A;
+  --color-ink-secondary: rgba(26,26,26,0.85);
+  --color-ink-tertiary:  rgba(26,26,26,0.65);
+  --color-border:        #1A1A1A;
+  --color-border-subtle: rgba(26,26,26,0.14);
+  --color-shadow:        #1A1A1A;
+  --color-brand-blue:    #004BEF;
+  --color-brand-blue-hover: #003ACC;
+  --color-brand-blue-subtle: #EEF3FF;
+  --color-brand-yellow:  #FFA801;
+  --color-accent-cyan:   #5BE0FF;
+  --color-success:       #10B981;
+  --color-success-muted: #D1FAE5;
+  --color-error:         #EF4444;
+  --color-warning:       #F59E0B;
+  --color-warning-muted: #FEF9C3;
+
+  --sp-1:4px; --sp-2:8px; --sp-3:12px; --sp-4:16px; --sp-5:20px;
+  --sp-6:24px; --sp-8:32px; --sp-10:40px; --sp-12:48px; --sp-16:64px; --sp-20:80px;
+
+  --radius-sm:4px; --radius-md:6px; --radius-lg:10px; --radius-xl:16px; --radius-full:999px;
+  --shadow-1: 4px 4px 0 var(--color-shadow);
+  --shadow-2: 5px 5px 0 var(--color-shadow);
+  --shadow-3: 7px 7px 0 var(--color-shadow);
+
+  --font-display: 'Bebas Neue', sans-serif;
+  --font-ui:      'Bricolage Grotesque', sans-serif;
+  --font-body:    'DM Sans', sans-serif;
+  --font-mono:    'JetBrains Mono', monospace;
+  --border-width: 2px;
+}
+
+[data-theme="dark"] {
+  --color-bg-page:      #111110;
+  --color-bg-surface:   #1A1918;
+  --color-bg-surface-2: #222120;
+  --color-ink:          #E8E4DC;
+  --color-ink-secondary:rgba(232,228,220,0.92);
+  --color-ink-tertiary: rgba(232,228,220,0.72);
+  --color-border:       #FFFFFF;
+  --color-border-subtle:rgba(255,255,255,0.13);
+  --color-shadow:       #E8E4DC;
+  --color-brand-blue-subtle: #000C40;
+}
+
+html { scroll-behavior: smooth; }
+body {
+  background: var(--color-bg-page);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  transition: background 0.2s, color 0.2s;
+}
+
+/* ── NAV ── */
+nav {
+  position: sticky; top: 0; z-index: 100;
+  background: var(--color-bg-page);
+  border-bottom: var(--border-width) solid var(--color-border);
+  padding: 0 var(--sp-12);
+  display: flex; align-items: center; height: 56px;
+  transition: background 0.2s, border-color 0.2s;
+}
+.logo {
+  font-family: var(--font-display);
+  font-size: 20px; letter-spacing: 0.06em;
+  color: var(--color-ink); margin-right: auto;
+  display: flex; align-items: center; gap: var(--sp-2);
+  text-decoration: none;
+}
+.logo-mark {
+  width: 24px; height: 24px;
+  background: var(--color-brand-blue);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius-sm);
+  display: flex; align-items: center; justify-content: center;
+}
+.logo-mark svg { width: 11px; height: 11px; }
+.nav-right { display: flex; align-items: center; gap: var(--sp-4); }
+.nav-meta {
+  font-family: var(--font-mono);
+  font-size: 12px; letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--color-ink-secondary);
+}
+.theme-btn {
+  display: flex; align-items: center; gap: var(--sp-2);
+  padding: 6px var(--sp-3);
+  background: var(--color-ink);
+  color: var(--color-bg-page);
+  border: none; border-radius: var(--radius-lg);
+  font-family: var(--font-mono);
+  font-size: 10px; font-weight: 500;
+  letter-spacing: 0.06em; text-transform: uppercase;
+  cursor: pointer; transition: all 0.12s;
+}
+.theme-btn:hover { box-shadow: var(--shadow-2); transform: translate(-1px,-1px); }
+.pip {
+  width: 8px; height: 8px; border-radius: 50%;
+  border: 1.5px solid var(--color-bg-page);
+  background: var(--color-bg-page); opacity: 0.5;
+}
+
+/* ── PAGE ── */
+.page { max-width: 1180px; margin: 0 auto; padding: 0 var(--sp-12) var(--sp-20); }
+
+/* ── HERO ── */
+.hero {
+  border-bottom: var(--border-width) solid var(--color-border);
+  padding: var(--sp-16) 0 var(--sp-12);
+  margin-bottom: var(--sp-16);
+}
+.hero-kicker {
+  font-family: var(--font-mono);
+  font-size: 10px; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--color-brand-blue);
+  display: flex; align-items: center; gap: var(--sp-2);
+  margin-bottom: var(--sp-5);
+}
+.hero-kicker::before { content:''; width:18px; height:2px; background:var(--color-brand-blue); }
+.hero-kicker::after  { content:''; width:18px; height:2px; background:var(--color-brand-blue); }
+.hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(56px, 9vw, 120px);
+  line-height: 0.9; letter-spacing: 0.02em;
+  color: var(--color-ink); margin-bottom: var(--sp-6);
+}
+.hero h1 .accent { color: var(--color-brand-blue); }
+.hero-sub {
+  font-size: 17px; color: var(--color-ink-secondary);
+  max-width: 640px; line-height: 1.7;
+  margin-bottom: var(--sp-10);
+}
+.hero-pills {
+  display: flex; flex-wrap: wrap; gap: var(--sp-2);
+}
+.pill {
+  font-family: var(--font-mono);
+  font-size: 12px; font-weight: 500;
+  text-transform: uppercase; letter-spacing: 0.08em;
+  padding: 5px var(--sp-3);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: var(--color-bg-surface);
+  color: var(--color-ink-secondary);
+  transition: all 0.12s;
+}
+.pill:hover { transform: translate(-1px,-1px); box-shadow: var(--shadow-1); }
+.pill.blue { background: var(--color-brand-blue); color: #fff; border-color: var(--color-brand-blue); }
+.pill.yellow { background: var(--color-brand-yellow); color: #111; border-color: var(--color-brand-yellow); }
+.pill.cyan  { background: var(--color-accent-cyan); color: #111; border-color: var(--color-accent-cyan); }
+
+/* ── PHASE BLOCKS ── */
+.phase-grid {
+  display: grid; grid-template-columns: 1fr; gap: var(--sp-8);
+  margin-bottom: var(--sp-16);
+}
+
+.phase-card {
+  background: var(--color-bg-surface);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-3);
+  overflow: hidden;
+  transition: transform 0.14s, box-shadow 0.14s;
+}
+
+
+.phase-header {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: var(--sp-6);
+  padding: var(--sp-8) var(--sp-8) var(--sp-6);
+  border-bottom: var(--border-width) solid var(--color-border);
+}
+.phase-num {
+  font-family: var(--font-display);
+  font-size: 80px; line-height: 1;
+  letter-spacing: 0.02em; color: var(--color-ink);
+  opacity: 0.08; user-select: none;
+}
+.phase-heading { }
+.phase-label {
+  font-family: var(--font-mono);
+  font-size: 12px; letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: var(--sp-1);
+}
+.phase-title {
+  font-family: var(--font-display);
+  font-size: 38px; letter-spacing: 0.02em;
+  color: var(--color-ink); line-height: 1.0;
+}
+.phase-badge {
+  font-family: var(--font-mono);
+  font-size: 11px; letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: var(--sp-2) var(--sp-4);
+  border-radius: var(--radius-md);
+  border: var(--border-width) solid;
+  white-space: nowrap; align-self: flex-start;
+}
+.phase-body {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 0;
+}
+.phase-col {
+  padding: var(--sp-6) var(--sp-8);
+  border-right: 1px solid var(--color-border-subtle);
+}
+.phase-col:last-child { border-right: none; }
+
+.col-label {
+  font-family: var(--font-display);
+  font-size: 22px; letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-ink);
+  margin-bottom: var(--sp-4);
+  display: flex; align-items: center; gap: var(--sp-2);
+}
+.col-label::before {
+  display: none;
+}
+
+.col-heading {
+  font-family: var(--font-ui);
+  font-size: 14px; font-weight: 700;
+  color: var(--color-ink); margin-bottom: var(--sp-3);
+  letter-spacing: -0.01em;
+}
+
+.item-list { list-style: none; display: flex; flex-direction: column; gap: var(--sp-2); }
+.item-list li {
+  font-size: 16px; color: var(--color-ink-secondary);
+  line-height: 1.55;
+  display: flex; align-items: flex-start; gap: var(--sp-2);
+}
+.item-list li::before {
+  content: '—';
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--color-ink-tertiary);
+  flex-shrink: 0; margin-top: 3px;
+}
+
+.phase-footer {
+  padding: var(--sp-4) var(--sp-8);
+  background: var(--color-bg-surface-2);
+  border-top: 1px solid var(--color-border-subtle);
+  display: flex; align-items: center; gap: var(--sp-4);
+  flex-wrap: wrap;
+}
+.checkin-label {
+  font-family: var(--font-mono);
+  font-size: 11px; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--color-ink-secondary);
+}
+.checkin-item {
+  display: flex; align-items: center; gap: var(--sp-2);
+  font-size: 16px; color: var(--color-ink-secondary);
+}
+.checkin-dot {
+  width: 7px; height: 7px; border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* Phase colour themes */
+.phase-w1 .phase-label { color: var(--color-brand-blue); }
+.phase-w1 .phase-badge { background: var(--color-brand-blue-subtle); color: var(--color-brand-blue); border-color: var(--color-brand-blue); }
+.phase-w1 .checkin-dot { background: var(--color-brand-blue); }
+
+.phase-w2 .phase-label { color: #7C3AED; }
+.phase-w2 .phase-badge { background: #F5F3FF; color: #7C3AED; border-color: #7C3AED; }
+.phase-w2 .checkin-dot { background: #7C3AED; }
+[data-theme="dark"] .phase-w2 .phase-badge { background: #1E1040; }
+
+.phase-w3 .phase-label { color: var(--color-success); }
+.phase-w3 .phase-badge { background: var(--color-success-muted); color: #065F46; border-color: var(--color-success); }
+.phase-w3 .checkin-dot { background: var(--color-success); }
+[data-theme="dark"] .phase-w3 .phase-badge { color: var(--color-success); }
+
+/* ── PRINCIPLES / OVERVIEW BAR ── */
+.overview-bar {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-3);
+  margin-bottom: var(--sp-16);
+}
+.ov-cell {
+  padding: var(--sp-6) var(--sp-6) var(--sp-5);
+  border-right: var(--border-width) solid var(--color-border);
+  background: var(--color-bg-surface);
+  transition: background 0.15s;
+}
+.ov-cell:last-child { border-right: none; }
+.ov-cell:hover { background: var(--color-bg-surface-2); }
+.ov-icon {
+  width: 36px; height: 36px;
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius-md);
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: var(--sp-4);
+  background: var(--color-bg-page);
+}
+.ov-num {
+  font-family: var(--font-display);
+  font-size: 32px; letter-spacing: 0.03em;
+  color: var(--color-ink); line-height: 1; margin-bottom: 4px;
+}
+.ov-label {
+  font-family: var(--font-mono);
+  font-size: 11px; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--color-ink-tertiary);
+  margin-bottom: var(--sp-2);
+}
+.ov-desc { font-size: 16px; color: var(--color-ink-secondary); line-height: 1.5; }
+
+/* ── ENGAGEMENT NOTES ── */
+.notes-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: var(--sp-4);
+  margin-bottom: var(--sp-16);
+}
+.note-card {
+  background: var(--color-bg-surface);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--sp-6);
+  box-shadow: var(--shadow-2);
+}
+.note-card-title {
+  font-family: var(--font-display);
+  font-size: 28px; font-weight: 800;
+  color: var(--color-ink); margin-bottom: var(--sp-3);
+  letter-spacing: 0.02em; line-height: 1;
+}
+.note-card p {
+  font-size: 14px; color: var(--color-ink-secondary); line-height: 1.65;
+}
+.note-card-accent { }
+.note-card-yellow { }
+
+/* ── FOOTER ── */
+footer {
+  border-top: var(--border-width) solid var(--color-border);
+  padding: var(--sp-8) var(--sp-12);
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: var(--sp-4);
+}
+.footer-brand {
+  font-family: var(--font-display);
+  font-size: 18px; letter-spacing: 0.06em;
+  color: var(--color-ink);
+}
+.footer-meta {
+  font-family: var(--font-mono);
+  font-size: 12px; letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--color-ink-secondary);
+}
+
+/* ── PRINT ── */
+@media print {
+  nav, .theme-btn { display: none !important; }
+  .phase-card { break-inside: avoid; }
+  body { background: #fff; color: #000; }
+  .phase-card:hover { transform: none; box-shadow: var(--shadow-3); }
+}
+
+/* ── TABLET (≤900px) ── */
+@media (max-width: 900px) {
+  nav { padding: 0 var(--sp-6); }
+  .page { padding: 0 var(--sp-6) var(--sp-16); }
+
+  .hero { padding: var(--sp-10) 0 var(--sp-8); margin-bottom: var(--sp-10); }
+
+  .overview-bar { grid-template-columns: 1fr 1fr; margin-bottom: var(--sp-10); }
+  .ov-cell:nth-child(2) { border-right: none; }
+  .ov-cell:nth-child(3) { border-top: var(--border-width) solid var(--color-border); }
+  .ov-cell:nth-child(4) { border-top: var(--border-width) solid var(--color-border); border-right: none; }
+
+  .phase-header { grid-template-columns: auto 1fr auto; gap: var(--sp-4); padding: var(--sp-6); }
+  .phase-num { font-size: 56px; }
+  .phase-title { font-size: 28px; }
+
+  .phase-body { grid-template-columns: 1fr; }
+  .phase-col { border-right: none; border-bottom: 1px solid var(--color-border-subtle); }
+  .phase-col:last-child { border-bottom: none; }
+
+  .phase-footer { padding: var(--sp-4) var(--sp-6); gap: var(--sp-3); flex-direction: column; align-items: flex-start; }
+
+  .notes-grid { grid-template-columns: 1fr; margin-bottom: var(--sp-10); }
+
+  footer { padding: var(--sp-6); flex-direction: column; align-items: flex-start; }
+}
+
+/* ── MOBILE (≤540px) ── */
+@media (max-width: 540px) {
+  nav { padding: 0 var(--sp-4); height: 52px; }
+  .logo { font-size: 16px; }
+  .page { padding: 0 var(--sp-4) var(--sp-12); }
+
+  .hero { padding: var(--sp-8) 0 var(--sp-6); margin-bottom: var(--sp-8); }
+  .hero-sub { font-size: 15px; }
+  .hero-pills { flex-direction: column; }
+
+  .overview-bar { grid-template-columns: 1fr; border-radius: var(--radius-lg); margin-bottom: var(--sp-8); }
+  .ov-cell { border-right: none; border-bottom: var(--border-width) solid var(--color-border);
+    display: flex; align-items: center; gap: var(--sp-4); }
+  .ov-cell:last-child { border-bottom: none; }
+  .ov-cell:nth-child(2),
+  .ov-cell:nth-child(3),
+  .ov-cell:nth-child(4) { border-top: none; }
+  .ov-icon { margin-bottom: 0; flex-shrink: 0; }
+  .ov-num { font-size: 28px; margin-bottom: 2px; }
+  .ov-label { margin-bottom: 0; }
+
+  .phase-header { grid-template-columns: 1fr auto; padding: var(--sp-5); }
+  .phase-num { display: none; }
+  .phase-title { font-size: 24px; }
+  .phase-label { font-size: 11px; }
+
+  .phase-col { padding: var(--sp-5); }
+  .col-label { font-size: 18px; }
+
+  .phase-footer { padding: var(--sp-4) var(--sp-5); }
+  .checkin-item { font-size: 14px; }
+
+  .phase-grid { gap: var(--sp-6); margin-bottom: var(--sp-10); }
+  .phase-card { border-radius: var(--radius-lg); }
+
+  .note-card { padding: var(--sp-5); }
+  .note-card-title { font-size: 22px; }
+
+  footer { padding: var(--sp-5) var(--sp-4); }
+  .footer-brand { font-size: 15px; }
+  .footer-meta { font-size: 11px; }
+  .item-list li { font-size: 14px; }
+  .ov-desc { font-size: 14px; display: none; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="logo">Sammie Nguyen · UX UI Designer</a>
+  <div class="nav-right">
+
+    <button class="theme-btn" onclick="toggleTheme()">
+      <span class="pip" id="pip"></span>
+      <span id="tlabel">Light</span>
+    </button>
+  </div>
+</nav>
+
+<div class="page">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-kicker">Engagement Roadmap</div>
+    <h1>UI Audit &amp;<br><span class="accent">Design System</span><br>Foundation</h1>
+    <p class="hero-sub">A focused 3-week part-time engagement (3 days per week) to audit your current product, establish a scalable design token architecture and component library, and demonstrate the new system through a real feature redesign.</p>
+    <div class="hero-pills">
+      <span class="pill blue">Week 1 — Audit &amp; Discovery</span>
+      <span class="pill" style="background:#F5F3FF; color:#7C3AED; border-color:#7C3AED;">Week 2 — Design System Foundations</span>
+      <span class="pill cyan">Week 3 — Feature Redesign</span>
+    </div>
+  </div>
+
+  <!-- OVERVIEW BAR -->
+  <div class="overview-bar">
+    <div class="ov-cell">
+      <div class="ov-icon">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6.5" stroke="var(--color-ink)" stroke-width="1.5"/><path d="M5 8l2 2 4-4" stroke="var(--color-brand-blue)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <div class="ov-num" style="color:var(--color-brand-blue);">3</div>
+      <div class="ov-label">Phases</div>
+      <div class="ov-desc">Audit → Foundations → Feature Demo. Sequential, low-risk delivery.</div>
+    </div>
+    <div class="ov-cell">
+      <div class="ov-icon">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="2" y="2" width="12" height="12" rx="2" stroke="var(--color-ink)" stroke-width="1.5"/><path d="M5 6h6M5 9h4" stroke="var(--color-brand-yellow)" stroke-width="1.5" stroke-linecap="round"/></svg>
+      </div>
+      <div class="ov-num" style="color:var(--color-brand-yellow);">14+</div>
+      <div class="ov-label">Deliverables</div>
+      <div class="ov-desc">Audit report, token library, components, and a redesigned feature.</div>
+    </div>
+    <div class="ov-cell">
+      <div class="ov-icon">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 2v4l3 2" stroke="var(--color-ink)" stroke-width="1.5" stroke-linecap="round"/><circle cx="8" cy="8" r="6.5" stroke="var(--color-ink)" stroke-width="1.5"/></svg>
+      </div>
+      <div class="ov-num">9</div>
+      <div class="ov-label">Working Days</div>
+      <div class="ov-desc">3 days per week across 3 weeks. Flexible to Mon / Wed / Fri or equivalent.</div>
+    </div>
+    <div class="ov-cell">
+      <div class="ov-icon">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 13L8 3l5 10H3z" stroke="var(--color-ink)" stroke-width="1.5" stroke-linejoin="round"/><path d="M8 9v2" stroke="var(--color-brand-blue)" stroke-width="1.5" stroke-linecap="round"/></svg>
+      </div>
+      <div class="ov-num" style="color:var(--color-success);">AA</div>
+      <div class="ov-label">WCAG Target</div>
+      <div class="ov-desc">Colour contrast and interaction patterns reviewed against WCAG 2.1 AA.</div>
+    </div>
+  </div>
+
+  <!-- PHASE CARDS -->
+  <div class="phase-grid">
+
+    <!-- WEEK 1 -->
+    <div class="phase-card phase-w1">
+      <div class="phase-header">
+        <div class="phase-num">01</div>
+        <div class="phase-heading">
+          <div class="phase-label">Week 1 · Days 1, 2 &amp; 3</div>
+          <div class="phase-title">UI Audit &amp; Discovery</div>
+        </div>
+        <div class="phase-badge">Audit</div>
+      </div>
+      <div class="phase-body">
+        <div class="phase-col">
+          <div class="col-label">Goals</div>
+          <ul class="item-list">
+            <li>Develop a complete cross-platform picture of the current product — desktop, tablet, and mobile</li>
+            <li>Surface all major inconsistencies in layout, spacing, typography, colour, and components</li>
+            <li>Identify key usability and accessibility gaps against WCAG 2.1 AA</li>
+            <li>Align on a high-level visual direction for the system going forward</li>
+          </ul>
+        </div>
+        <div class="phase-col">
+          <div class="col-label">Deliverables</div>
+          <div class="col-heading">Audit Report</div>
+          <ul class="item-list">
+            <li>Annotated UI audit across all breakpoints with documented issues</li>
+            <li>Issue log organised by element and component, covering layout, spacing, typography, and colour — with an inventory of existing styles</li>
+            <li>Visual direction moodboard and design language brief (2–3 directions)</li>
+          </ul>
+        </div>
+        <div class="phase-col">
+          <div class="col-label">Expected Outcomes</div>
+          <ul class="item-list">
+            <li>Shared understanding of the current state and its most painful failure points</li>
+            <li>Stakeholder consensus on visual direction and design system tone</li>
+            <li>A clear list of elements and components to build in Week 2, informed by the audit findings</li>
+          </ul>
+        </div>
+      </div>
+      <div class="phase-footer">
+        <span class="checkin-label">Check-ins</span>
+        <div class="checkin-item"><span class="checkin-dot" style="background:var(--color-brand-blue);"></span>Day 1 — Kick-off call &amp; access handover</div>
+        <div class="checkin-item"><span class="checkin-dot" style="background:var(--color-brand-blue);"></span>Day 2 — Async audit preview (Figma / Loom)</div>
+        <div class="checkin-item"><span class="checkin-dot" style="background:var(--color-brand-blue);"></span>Day 3 — Audit readout &amp; direction sign-off call</div>
+      </div>
+    </div>
+
+    <!-- WEEK 2 -->
+    <div class="phase-card phase-w2">
+      <div class="phase-header">
+        <div class="phase-num">02</div>
+        <div class="phase-heading">
+          <div class="phase-label">Week 2 · Days 4, 5 &amp; 6</div>
+          <div class="phase-title">Design System Foundations</div>
+        </div>
+        <div class="phase-badge">Build</div>
+      </div>
+      <div class="phase-body">
+        <div class="phase-col">
+          <div class="col-label">Goals</div>
+          <ul class="item-list">
+            <li>Establish a token-first design architecture — primitives mapped to semantic aliases</li>
+            <li>Define foundational tokens: colour, typography, spacing, radius, and elevation — motion and interaction patterns to follow once foundations are settled</li>
+            <li>Build the most-used components as reusable, well-documented Figma variants</li>
+            <li>Lay the structural foundation for future team adoption and product expansion</li>
+          </ul>
+        </div>
+        <div class="phase-col">
+          <div class="col-label">Deliverables</div>
+          <div class="col-heading">Token Library + Core Components</div>
+          <ul class="item-list">
+            <li>Token file — colour primitives, semantic aliases, spacing scale, radius, elevation</li>
+            <li>Typography system — type roles, font pairing, size scale, line height, weight</li>
+            <li>Figma component library: Button, Input, Select, Checkbox, Radio, Modal, Card, Badge, Table row, Navigation bar, Form layout</li>
+            <li>Light mode only for now — dark mode to follow after Week 3 once foundations are solid</li>
+            <li>Naming conventions doc and brief contributor guide</li>
+          </ul>
+        </div>
+        <div class="phase-col">
+          <div class="col-label">Expected Outcomes</div>
+          <ul class="item-list">
+            <li>A shared source of truth for design decisions — no more ad hoc colour or spacing choices</li>
+            <li>Components that are production-ready, variant-rich, and documented for developer handoff</li>
+            <li>A scalable architecture that grows as the product does — no throw-away work</li>
+            <li>Team confidence that the system reflects the agreed visual direction from Week 1</li>
+          </ul>
+        </div>
+      </div>
+      <div class="phase-footer">
+        <span class="checkin-label">Check-ins</span>
+        <div class="checkin-item"><span class="checkin-dot" style="background:#7C3AED;"></span>Day 4 — Token review &amp; component scope alignment</div>
+        <div class="checkin-item"><span class="checkin-dot" style="background:#7C3AED;"></span>Day 5 — Component WIP review (async Figma comment)</div>
+        <div class="checkin-item"><span class="checkin-dot" style="background:#7C3AED;"></span>Day 6 — Library hand-off walkthrough call</div>
+      </div>
+    </div>
+
+    <!-- WEEK 3 -->
+    <div class="phase-card phase-w3">
+      <div class="phase-header">
+        <div class="phase-num">03</div>
+        <div class="phase-heading">
+          <div class="phase-label">Week 3 · Days 7, 8 &amp; 9</div>
+          <div class="phase-title">Feature Redesign Example</div>
+        </div>
+        <div class="phase-badge">Demonstrate</div>
+      </div>
+      <div class="phase-body">
+        <div class="phase-col">
+          <div class="col-label">Goals</div>
+          <ul class="item-list">
+            <li>Select one representative, self-contained feature — agreed with the client at kick-off or during Week 1</li>
+            <li>Redesign it end-to-end using only system-defined tokens and library components</li>
+            <li>Show how the design system elevates the feature: improved hierarchy, clarity, and visual quality</li>
+            <li>Produce a handoff-ready file that the dev team can immediately act on</li>
+          </ul>
+        </div>
+        <div class="phase-col">
+          <div class="col-label">Deliverables</div>
+          <div class="col-heading">Redesigned Feature + Handoff</div>
+          <ul class="item-list">
+            <li>Desktop + mobile redesign of the chosen feature — core happy path only</li>
+            <li>Side-by-side before/after comparison for stakeholder presentation</li>
+            <li>Annotated design spec (spacing, tokens, component states)</li>
+            <li>Interaction notes for key UI moments (focus states, empty states, loading)</li>
+            <li>Shared Figma file with annotations so stakeholders can explore anytime — plus a call to walk through it together if useful</li>
+          </ul>
+        </div>
+        <div class="phase-col">
+          <div class="col-label">Expected Outcomes</div>
+          <ul class="item-list">
+            <li>Tangible, real-world proof that the design system improves the product</li>
+            <li>A referenceable template for how the team should approach future feature work</li>
+            <li>Developer-ready specs that accelerate implementation without additional design effort</li>
+            <li>Stakeholder buy-in and momentum to continue expanding the system post-engagement</li>
+            <li>Before/after comparison of UI inconsistencies to show measurable progress</li>
+          </ul>
+        </div>
+      </div>
+      <div class="phase-footer">
+        <span class="checkin-label">Check-ins</span>
+        <div class="checkin-item"><span class="checkin-dot" style="background:var(--color-success);"></span>Day 7 — Feature scope confirmation &amp; design kick-off</div>
+        <div class="checkin-item"><span class="checkin-dot" style="background:var(--color-success);"></span>Day 8 — Design WIP review (async Loom)</div>
+        <div class="checkin-item"><span class="checkin-dot" style="background:var(--color-success);"></span>Day 9 — Final presentation &amp; engagement close</div>
+      </div>
+    </div>
+
+  </div><!-- /phase-grid -->
+
+  <!-- ENGAGEMENT NOTES -->
+  <div class="notes-grid">
+    <div class="note-card note-card-accent">
+      <div class="note-card-title">Scope Principles</div>
+      <ul class="item-list">
+        <li>Scoped to the core design layer only — Figma files, token definitions, and design specs</li>
+        <li>Engineering implementation, Storybook setup, and product rollout are not included — this engagement is design-only</li>
+        <li>The Week 3 feature redesign covers the primary user flow only</li>
+        <li>Edge cases, error states beyond the component library, and admin variants are deferred to a follow-on engagement</li>
+      </ul>
+    </div>
+    <div class="note-card note-card-yellow">
+      <div class="note-card-title">What We Need From You</div>
+      <ul class="item-list">
+        <li>Access to the current product — staging login or screen recordings</li>
+        <li>Any existing brand guidelines or Figma files</li>
+        <li>One key stakeholder point of contact for async review</li>
+            <li>Week 3 feature decision ideally confirmed at kick-off, or no later than the end of Week 1</li>
+        <li>A shared Figma workspace and communication channel (Slack or equivalent) from Day 1</li>
+      </ul>
+    </div>
+    <div class="note-card">
+      <div class="note-card-title">Collaboration Model</div>
+      <ul class="item-list">
+        <li>Part-time engagement — 3 days per week, ideally Monday, Wednesday, and Friday</li>
+        <li>Exact days agreed at kick-off to suit your team's schedule</li>
+        <li>Off-days are built in for async review without calendar pressure</li>
+        <li>Each phase ends with a structured live call before the next phase begins</li>
+        <li>Decisions made at each phase gate are locked to protect timeline and quality</li>
+      </ul>
+    </div>
+    <div class="note-card">
+      <div class="note-card-title">After the Engagement</div>
+      <ul class="item-list">
+        <li>Production-ready Figma component library with documented variants</li>
+        <li>A full token architecture file ready for developer handoff</li>
+        <li>A real feature redesign demonstrating the system in action</li>
+        <li>All assets designed to be extended by your in-house team or via a follow-on retainer</li>
+        <li>Not locked to any proprietary toolchain</li>
+      </ul>
+    </div>
+  </div>
+
+</div><!-- /page -->
+
+<footer>
+  <div class="footer-brand">Sammie Nguyen · UX UI Designer · UI Audit &amp; Design System Engagement</div>
+  <div class="footer-meta">3 Weeks · 3 Days/Week · 9 Working Days · 14+ Deliverables · WCAG AA</div>
+</footer>
+
+<script>
+  let dark = false;
+  function toggleTheme() {
+    dark = !dark;
+    document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light');
+    document.getElementById('tlabel').textContent = dark ? 'Dark' : 'Light';
+  }
+</script>
+</body>
+</html>
